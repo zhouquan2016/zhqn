@@ -44,7 +44,7 @@
                             </build>
                         </image>
                     </images>
-                    <dockerHost>DOCKER_HOST</dockerHost>
+                    <dockerHost>${DOCKER_HOST}</dockerHost>
                     <imagePullPolicy>IfNotPresent</imagePullPolicy>
                     <authConfig>
                         <username>${env.DOCKER.REGISTRY.USERNAME}</username>
