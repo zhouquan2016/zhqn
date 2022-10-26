@@ -1,0 +1,5 @@
+feign-client:
+  platform-url: http://localhost:7003
+spring:
+  application:
+    name: base

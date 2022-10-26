@@ -1,0 +1,18 @@
+server:
+  port: 7003
+spring:
+  application:
+    name: platform
+platform:
+  elastic:
+    hostname: https://localhost:9200
+    username: elastic
+    password: "*-OfSOToRaNn5oOeysnI"
+  clickhouse:
+    host: 192.168.10.10
+    port: 31678
+    database: platform
+    user: default
+    timeZone: Asia/Shanghai
+feign-client:
+  platform-url: http://192.168.10.10:32160

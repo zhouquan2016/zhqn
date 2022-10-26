@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test
+spec:
+  selector:
+    app: test
+  ports:
+    - port: 8080
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shop
+  labels:
+    app: shop
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: shop
+      labels:
+        app: shop
+    spec:
+      hostNetwork: true
+      containers:
+        - name: shop
+          image: registry.cn-hangzhou.aliyuncs.com/zhqn/zhqn:1
+          args:
+            - shop-1.0.0.jar
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            httpGet:
+              port: 7002
+              path: /health
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: shop
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platform
+  labels:
+    app: platform
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: platform
+      labels:
+        app: platform
+    spec:
+      containers:
+        - name: platform
+          image: registry.cn-hangzhou.aliyuncs.com/zhqn/zhqn:1
+          args:
+            - platform-1.0.0.jar
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            httpGet:
+              port: 7003
+              path: /health
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: platform

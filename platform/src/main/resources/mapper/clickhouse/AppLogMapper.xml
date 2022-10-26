@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhqn.platform.mapper.clickhouse.AppLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.zhqn.platform.domain.entity.AppLogEntity">
+            <result property="appName" column="app_Name" jdbcType="OTHER"/>
+            <result property="host" column="host" jdbcType="OTHER"/>
+            <result property="time" column="time" jdbcType="TIMESTAMP"/>
+            <result property="level" column="level" jdbcType="OTHER"/>
+            <result property="threadName" column="thread_name" jdbcType="OTHER"/>
+            <result property="classFullName" column="class_full_name" jdbcType="OTHER"/>
+            <result property="methodName" column="method_name" jdbcType="OTHER"/>
+            <result property="lineNumber" column="line_number" jdbcType="OTHER"/>
+            <result property="message" column="message" jdbcType="OTHER"/>
+            <result property="exception" column="exception" jdbcType="OTHER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        app_Name,host,time,
+        level,thread_name,class_full_name,
+        method_name,line_number,message,
+        exception,create_time
+    </sql>
+</mapper>
