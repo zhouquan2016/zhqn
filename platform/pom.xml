@@ -85,7 +85,7 @@
 							</build>
 						</image>
 					</images>
-					<dockerHost>tcp://192.168.10.10:2375</dockerHost>
+					<dockerHost>tcp://192.168.48.131:2375</dockerHost>
 					<imagePullPolicy>IfNotPresent</imagePullPolicy>
 					<authConfig>
 						<username>${env.DOCKER.REGISTRY.USERNAME}</username>
