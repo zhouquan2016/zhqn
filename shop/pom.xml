@@ -45,7 +45,7 @@
                         </image>
                     </images>
                     <!--suppress UnresolvedMavenProperty -->
-                    <dockerHost>${DOCKER_HOST}</dockerHost>
+                    <dockerHost>${DOCKER.HOST}</dockerHost>
                     <imagePullPolicy>IfNotPresent</imagePullPolicy>
                     <authConfig>
                         <!--suppress UnresolvedMavenProperty -->
