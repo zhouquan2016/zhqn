@@ -6,7 +6,7 @@
         <groupId>com.zhqn</groupId>
         <artifactId>parent</artifactId>
         <version>1.0.0</version>
-        <relativePath>../</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>com.zhqn</groupId>
     <artifactId>shop</artifactId>
@@ -44,11 +44,14 @@
                             </build>
                         </image>
                     </images>
+                    <!--suppress UnresolvedMavenProperty -->
                     <dockerHost>${DOCKER_HOST}</dockerHost>
                     <imagePullPolicy>IfNotPresent</imagePullPolicy>
                     <authConfig>
-                        <username>${env.DOCKER.REGISTRY.USERNAME}</username>
-                        <password>${env.DOCKER.REGISTRY.PASSWORD}</password>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <username>${DOCKER.REGISTRY.USERNAME}</username>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <password>${DOCKER.REGISTRY.PASSWORD}</password>
                     </authConfig>
                 </configuration>
                 <executions>
