@@ -6,7 +6,7 @@ WORKDIR ${SOURCE_DIR}
 COPY . .
 
 RUN mvn  clean compile package -pl base,shop -DskipTests=true -Dmaven.test.skip=true
-RUN cp ./platform/target/*.jar ${BUILD_DIR}
+RUN cp ./shop/target/*.jar ${BUILD_DIR}
 RUN ls -f ${BUILD_DIR}
 RUN rm -rf ${SOURCE_DIR}
 RUN cd ${BUILD_DIR} && java -Djarmode=layertools -jar *.jar extract && rm -f *.jar
