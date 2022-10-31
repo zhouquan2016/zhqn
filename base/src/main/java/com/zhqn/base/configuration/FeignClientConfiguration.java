@@ -34,7 +34,7 @@ public class FeignClientConfiguration {
 
     @Bean
     public AppLogClient appLogClient (Feign.Builder baseBuilder) {
-        String url = Optional.of(feignProperties.getClients().get("platform")).orElse("platform");
+        String url = Optional.of(feignProperties.getClients().get("platform")).orElse("http://platform");
         System.out.println("platform url:" + url);
         return baseBuilder.target(AppLogClient.class, url);
     }
