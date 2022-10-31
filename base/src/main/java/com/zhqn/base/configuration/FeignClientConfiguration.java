@@ -5,7 +5,6 @@ import com.zhqn.base.properties.FeignProperties;
 import feign.Feign;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,7 +35,7 @@ public class FeignClientConfiguration {
     @Bean
     public AppLogClient appLogClient (Feign.Builder baseBuilder) {
         String url = Optional.of(feignProperties.getClients().get("platform")).orElse("platform");
-        System.out.println("platform url:" + );
+        System.out.println("platform url:" + url);
         return baseBuilder.target(AppLogClient.class, url);
     }
 }
