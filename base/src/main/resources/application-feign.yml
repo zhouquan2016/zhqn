@@ -1,0 +1,4 @@
+feign-client:
+  clients:
+    platform: http://192.168.48.141:32291
+    shop: http://192.168.48.141:32110

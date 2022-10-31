@@ -1,7 +1,7 @@
 package com.zhqn.base.configuration;
 
 import com.zhqn.base.feign.platform.AppLogClient;
-import com.zhqn.base.properties.FeignClientProperties;
+import com.zhqn.base.properties.FeignProperties;
 import feign.Feign;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
@@ -19,11 +19,11 @@ import javax.annotation.Resource;
  * @author zhouquan3
  */
 @Configuration
-@EnableConfigurationProperties(FeignClientProperties.class)
+@EnableConfigurationProperties(FeignProperties.class)
 public class FeignClientConfiguration {
 
     @Resource
-    FeignClientProperties feignClientProperties;
+    FeignProperties feignProperties;
 
 
     @Bean
@@ -33,6 +33,6 @@ public class FeignClientConfiguration {
 
     @Bean
     public AppLogClient appLogClient (Feign.Builder baseBuilder) {
-        return baseBuilder.target(AppLogClient.class, feignClientProperties.getPlatformUrl());
+        return baseBuilder.target(AppLogClient.class, feignProperties.getClients().get("platform"));
     }
 }

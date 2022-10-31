@@ -3,5 +3,5 @@ server:
 spring:
   application:
     name: shop
-#feign-client:
-#  platform-url: http://192.168.10.10:32160
+  profiles:
+    active: feign
