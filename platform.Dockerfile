@@ -19,5 +19,6 @@ COPY --from=build ${EXTRACTED}/dependencies/ ./
 COPY --from=build ${EXTRACTED}/spring-boot-loader/ ./
 COPY --from=build ${EXTRACTED}/snapshot-dependencies/ ./
 COPY --from=build ${EXTRACTED}/application/ ./
-
-ENTRYPOINT ["java", "-XX:+UseContainerSupport", "-XX:MaxRAMPercentage=80.0",  "org.springframework.boot.loader.JarLauncher"]
+EXPOSE 80
+ENV LANG C.UTF-8
+ENTRYPOINT ["java", "-XX:+UseContainerSupport", "-XX:MaxRAMPercentage=80.0", "-Dspring.profiles.active=none", "org.springframework.boot.loader.JarLauncher"]

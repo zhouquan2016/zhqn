@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
-import java.util.Optional;
 
 /**
  * FileName: FeignClientConfiguration
@@ -34,8 +33,12 @@ public class FeignClientConfiguration {
 
     @Bean
     public AppLogClient appLogClient (Feign.Builder baseBuilder) {
-        String url = Optional.of(feignProperties.getClients().get("platform")).orElse("http://platform");
-        System.out.println("platform url:" + url);
-        return baseBuilder.target(AppLogClient.class, url);
+        return baseBuilder.target(AppLogClient.class, getFeignUrl("platform"));
+    }
+
+    private String getFeignUrl(String name) {
+        String url = feignProperties.getClients() != null ? feignProperties.getClients().get("platform") : "http://platform";
+        System.out.println(name + " url:" + url);
+        return url;
     }
 }
