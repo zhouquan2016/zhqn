@@ -5,11 +5,13 @@ import com.zhqn.base.properties.FeignProperties;
 import feign.Feign;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 /**
  * FileName: FeignClientConfiguration
@@ -33,6 +35,6 @@ public class FeignClientConfiguration {
 
     @Bean
     public AppLogClient appLogClient (Feign.Builder baseBuilder) {
-        return baseBuilder.target(AppLogClient.class, feignProperties.getClients().get("platform"));
+        return baseBuilder.target(AppLogClient.class, Optional.of(feignProperties.getClients().get("platform")).orElse("platform"));
     }
 }
